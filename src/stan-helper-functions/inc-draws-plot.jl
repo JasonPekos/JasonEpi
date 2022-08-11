@@ -1,3 +1,4 @@
+using StatsPlots
 
 function sampled_inc_plot(chain, data, num_plots)
 

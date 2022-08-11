@@ -1,3 +1,5 @@
+using StanSample
+
 function cb_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
     
     data_dict = Dict("numobs" => length(model.inc),
@@ -15,7 +17,7 @@ function cb_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
         # Convert output to MCMC Chains object. 
         post_chain = read_samples(cb, :mcmcchains)
         names = namesingroup(post_chain, :I; index_type = :dot)
-        nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3] * "]") for i in 1:length(names))
+        nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end-1] * "]") for i in 1:length(names))
     
         out_chain = replacenames(post_chain,  nc)
 
