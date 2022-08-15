@@ -17,7 +17,7 @@ function cb_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
         # Convert output to MCMC Chains object. 
         post_chain = read_samples(cb, :mcmcchains)
         names = namesingroup(post_chain, :I; index_type = :dot)
-        nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end-1] * "]") for i in 1:length(names))
+        nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
     
         out_chain = replacenames(post_chain,  nc)
 
@@ -25,3 +25,31 @@ function cb_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
     end
     return "Failure during sampling"
 end
+
+
+
+# function sir_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
+    
+#     data_dict = Dict("numobs" => length(model.inc),
+#                  "obs" => model.inc,
+#                  "N" => model.pop,
+#                  "zerohack" => 0)
+
+#     # Compile model:
+#     sir = SampleModel("sir", model.stan_string)
+
+#     # Sample from model:
+#     chain = stan_sample(sir, data = data_dict, num_chains = chains)
+
+#     if success(chain)
+#         # Convert output to MCMC Chains object. 
+#         post_chain = read_samples(sir, :mcmcchains)
+#         names = namesingroup(post_chain, :I; index_type = :dot)
+#         nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
+    
+#         out_chain = replacenames(post_chain,  nc)
+
+#         return out_chain
+#     end
+#     return "Failure during sampling"
+# end
