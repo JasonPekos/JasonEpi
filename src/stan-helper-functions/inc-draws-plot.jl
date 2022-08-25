@@ -24,10 +24,10 @@ function sampled_inc_plot(chain, data, num_plots)
     return p 
 end
 
-function sampled_plot(chain, data, num_plots, symbol, diff = "false")
+function sampled_plot(chain, data, num_plots, symbol, diffres = "false")
 
     p = plot()
-    if diff == "false"
+    if diffres == "false"
         p = plot(Array(chain[namesingroup(chain, symbol)][1])[1,:],
                 color = :blue,
                 opacity = 0.1,
@@ -40,7 +40,7 @@ function sampled_plot(chain, data, num_plots, symbol, diff = "false")
                 label = "" )
         end
     end
-    if diff == "true"
+    if diffres == "true"
         p = plot(diff(Array(chain[namesingroup(chain, symbol)][1])[1,:]),
                 color = :blue,
                 opacity = 0.1,
