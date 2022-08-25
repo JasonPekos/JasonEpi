@@ -63,6 +63,11 @@ function sird_stan_sample(model, sampler = :NUTS, samples = 1000, chains = 1)
         nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
         out_chain = replacenames(out_chain,  nc)
 
+        
+        names = namesingroup(post_chain, :u; index_type = :dot)
+        nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
+        out_chain = replacenames(out_chain,  nc)
+
         return out_chain
     end
     return "Failure during sampling"
