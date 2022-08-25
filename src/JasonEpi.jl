@@ -1,7 +1,8 @@
 module JasonEpi
 
-export chain_binomial_sim, cb_stan_sample, sird_stan_sample, sampled_inc_plot, sir_sim_infected
-export StanCB, sampled_plot
+export chain_binomial_sim,sir_sim_infected, sird_sim
+export cb_stan_sample, sird_stan_sample, StanCB
+export sampled_plot,sampled_inc_plot
 
 using Distributions
 using MCMCChains
