@@ -51,18 +51,18 @@ function sird_stan_sample(model, sampler = :NUTS, samples = 1000, chains = 1)
         # replace D
         names = namesingroup(post_chain, :D; index_type = :dot)
         nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
-        out_chain = replacenames(post_chain,  nc)
+        out_chain = replacenames(out_chain,  nc)
 
         # replace R
         names = namesingroup(post_chain, :R; index_type = :dot)
         nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
-        out_chain = replacenames(post_chain,  nc)
+        out_chain = replacenames(out_chain,  nc)
 
         # replace S
         names = namesingroup(post_chain, :S; index_type = :dot)
         nc = Dict(names[i] => Symbol(String(names[i])[1] *"["*  String(names[i])[3:end] * "]") for i in 1:length(names))
-        out_chain = replacenames(post_chain,  nc)
-        
+        out_chain = replacenames(out_chain,  nc)
+
         return out_chain
     end
     return "Failure during sampling"
