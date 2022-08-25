@@ -31,7 +31,7 @@ function sampled_plot(chain, data, num_plots, symbol, diff = "false")
         p = plot(Array(chain[namesingroup(chain, symbol)][1])[1,:],
                 color = :blue,
                 opacity = 0.1,
-                label = "I, accepted samples",
+                label = "$symbol, accepted samples",
                 legend = :topleft );
 
         for i in 2:num_plots
@@ -44,7 +44,7 @@ function sampled_plot(chain, data, num_plots, symbol, diff = "false")
         p = plot(diff(Array(chain[namesingroup(chain, symbol)][1])[1,:]),
                 color = :blue,
                 opacity = 0.1,
-                label = "I, accepted samples",
+                label = "$symbol, accepted samples",
                 legend = :topleft );
 
         for i in 2:num_plots
