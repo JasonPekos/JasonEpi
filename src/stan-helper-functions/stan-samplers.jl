@@ -11,7 +11,7 @@ function cb_stan_sample(model, sampler = :NUTS, samples = 100, chains = 1)
     cb = SampleModel("cb", model.stan_string)
 
     # Sample from model:
-    chain = stan_sample(cb, data = data_dict, num_chains = chains)
+    chain = stan_sample(cb, data = data_dict, num_samples = samples, num_chains = chains)
 
     if success(chain)
         # Convert output to MCMC Chains object. 
