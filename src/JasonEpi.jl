@@ -10,6 +10,8 @@ using StatsPlots
 
 include("data-generation/simulate-cb-epidemic.jl")
 include("data-generation/simulate-sir.jl")
+include("data-generation/simulate-sird.jl")
+
 
 include("stan-helper-functions/stan-samplers.jl")
 include("stan-helper-functions/inc-draws-plot.jl")
